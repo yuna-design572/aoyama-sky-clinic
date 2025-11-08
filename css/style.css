@@ -237,17 +237,32 @@ h2{
     margin-top: 3rem;
 }
 
-.svgs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .svgs img {
-  width: 40px;
-  height: auto;
-  display: block;
+  flex-shrink: 0; /* ← Safariが画像を圧縮するバグ防止 */
 }
+.svgs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;   /* 縦中央揃え */
+    justify-content: center; /* ← 水平方向も中央寄せ！ */
+    gap: 0.5rem;
+    width: 100%;
+    text-align: center; 
+  }
+
+  /* Safari のズレ対策 */
+  .svgs img {
+    width: 40px;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .svgs h3,
+  .svgs h5 {
+    margin: 0;
+    line-height: 1.1;
+  }
 .reserve{
     text-align: center;
 }
@@ -411,17 +426,25 @@ section,
     margin-bottom: 2rem;
   }
 
-  .doctor{
-    display: block;
-  }
+
   .doctor p{
     padding: 0 2rem;
     margin-bottom: 2rem;
   }
-  .doctor img{
-    padding: 0 2rem;
-    max-width: 350px;
-  width: 100%;
+  .doctor {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ← 写真と文章どっちも中央 */
+    text-align: center;
+    gap: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .doctor img {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px; /* 画像を大きすぎないように */
+    width: 100%;
   }
   .flow {
     display: flex;
